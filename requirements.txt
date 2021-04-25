@@ -1,0 +1,2 @@
+jsoncodable==0.1.2
+kw3==0.0.4
