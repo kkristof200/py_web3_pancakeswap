@@ -10,7 +10,7 @@ else:
 
 setuptools.setup(
     name='kw3pan',
-    version='0.0.7',
+    version='0.0.8',
     author='Kristóf-Attila Kovács',
     description='kw3pan',
     long_description=long_description,
@@ -19,7 +19,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
         'jsoncodable>=0.1.2',
-        'kw3>=0.0.5'
+        'kw3>=0.0.6'
     ],
     classifiers=[
         'Programming Language :: Python :: 3.4',
