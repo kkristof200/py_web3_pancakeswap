@@ -9,7 +9,7 @@ from kw3 import Web3, Busd, Wbnb
 # Local
 from .reserves_wbnb_busd import ReservesWbnbBusd
 
-from ..core import PancakeswapLiquidityPool
+from ..core.pancakeswap_liquidity_pool import PancakeswapLiquidityPool
 
 from ...constants import Constants
 
