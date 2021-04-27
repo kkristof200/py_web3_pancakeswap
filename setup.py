@@ -10,7 +10,7 @@ else:
 
 setuptools.setup(
     name='kw3pan',
-    version='0.0.4',
+    version='0.0.5',
     author='Kristóf-Attila Kovács',
     description='kw3pan',
     long_description=long_description,
