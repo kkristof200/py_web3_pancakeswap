@@ -10,7 +10,7 @@ from kw3.constants import Constants
 # Local
 from .reserves_busd import ReservesBusd
 
-from ..core import PancakeswapLiquidityPool
+from ..core.pancakeswap_liquidity_pool import PancakeswapLiquidityPool
 
 # -------------------------------------------------------------------------------------------------------------------------------- #
 

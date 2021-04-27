@@ -4,7 +4,7 @@
 from kw3.constants import Constants
 
 # Local
-from ..core import Reserves
+from ..core.reserves import Reserves
 
 # -------------------------------------------------------------------------------------------------------------------------------- #
 
