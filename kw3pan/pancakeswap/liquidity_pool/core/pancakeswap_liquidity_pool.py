@@ -4,8 +4,8 @@
 from typing import Optional, Union, Tuple
 
 # Pip
-from kw3 import Web3
-from kw3 import WrappedContract, Bep20
+from kw3 import KWeb3 as Web3
+from kw3 import Bep20
 
 # Local
 from ._abi import pancakeswap_liquidity_pool_abi

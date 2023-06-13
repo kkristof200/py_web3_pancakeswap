@@ -2,12 +2,12 @@
 
 # System
 from typing import Optional
-import random
 
 # Pip
-from kw3 import Web3, Bep20, Web3Wrapper as CoreWeb3Wrapper
+from kw3 import KWeb3 as Web3
 
-from .pancakeswap import *
+from .factory import *
+from .liquidity_pool import *
 
 # -------------------------------------------------------------------------------------------------------------------------------- #
 
@@ -15,20 +15,41 @@ from .pancakeswap import *
 
 # ------------------------------------------------------ class: Web3Wrapper ------------------------------------------------------ #
 
-class Web3Wrapper(CoreWeb3Wrapper):
+class PancakeSwap:
+    
+    # --------------------------------------------------------- Init --------------------------------------------------------- #
 
-    # ---------------------------------------------------- Public methods ---------------------------------------------------- #
+    def __init__(
+        self,
+        web3: Optional[Web3] = None
+    ):
+        self.__web3 = web3 or Web3()
+        
+        self.__factory = None
+        self.__factory_wbnb = None
+        self.__factory_busd = None
+
+    # --------------------------------------------------- Public properties -------------------------------------------------- #
 
     # Factory
 
-    def pancakeswap_factory(self) -> PancakeswapFactory:
-        return PancakeswapFactory(self.__web3)
+    @property
+    def factory(self) -> PancakeswapFactory:
+        self.__factory = self.__factory or PancakeswapFactory(self.__web3)
 
-    def pancakeswap_wbnb_factory(self) -> PancakeswapWbnbFactory:
-        return PancakeswapWbnbFactory(self.__web3)
+        return self.__factory
 
-    def pancakeswap_busd_factory(self) -> PancakeswapBusdFactory:
-        return PancakeswapBusdFactory(self.__web3)
+    @property
+    def factory_wbnb(self) -> PancakeswapWbnbFactory:
+        self.__factory_wbnb = self.__factory or PancakeswapWbnbFactory(self.__web3)
+
+        return self.__factory_wbnb
+
+    @property
+    def factory_busd(self) -> PancakeswapBusdFactory:
+        self.__factory_busd = self.__factory or PancakeswapBusdFactory(self.__web3)
+
+        return self.__factory_busd
 
 
     # Liquidity pool
@@ -61,7 +82,7 @@ class Web3Wrapper(CoreWeb3Wrapper):
         self,
         token_address: str
     ) -> PancakeswapLiquidityPool:
-        return self.pancakeswap_wbnb_factory().getPair(
+        return self.factory_wbnb.getPair(
             address=token_address
         )
 
@@ -69,7 +90,7 @@ class Web3Wrapper(CoreWeb3Wrapper):
         self,
         token_address: str
     ) -> PancakeswapLiquidityPool:
-        return self.pancakeswap_busd_factory().getPair(
+        return self.factory_busd.getPair(
             address=token_address
         )
 
